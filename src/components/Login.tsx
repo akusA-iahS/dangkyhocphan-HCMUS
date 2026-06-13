@@ -2,13 +2,14 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { LogIn, User, KeyRound, AlertCircle } from 'lucide-react';
+import { LogIn, User, KeyRound, AlertCircle, Eye, EyeOff } from 'lucide-react';
 import { useStore } from '../store/useStore';
 
 export default function Login() {
   const [studentId, setStudentId] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const login = useStore((state) => state.login);
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -68,13 +69,21 @@ export default function Login() {
             <div className="relative">
               <KeyRound className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" />
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full bg-gray-800 border border-gray-700 rounded-lg py-2.5 pl-10 pr-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                className="w-full bg-gray-800 border border-gray-700 rounded-lg py-2.5 pl-10 pr-12 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                 placeholder="••••••••"
                 required
               />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-300 transition-colors"
+                aria-label={showPassword ? "Hide password" : "Show password"}
+              >
+                {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+              </button>
             </div>
           </div>
 
