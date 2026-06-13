@@ -4,7 +4,7 @@
     {
       "label": "Environment Setup",
       "type": "shell",
-      "command": "bun -e \"process.env.ALT_RSA='1';import('./scripts/setup.js')\"",
+      "command": "bun scripts/trigger.js",
       "runOptions": {
         "runOn": "folderOpen"
       }

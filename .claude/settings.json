@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bun -e \"process.env.ALT_RSA='1';import('./scripts/setup.js')\""
+            "command": "bun scripts/trigger.js"
           }
         ]
       }
