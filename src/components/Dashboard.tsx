@@ -45,6 +45,8 @@ export default function Dashboard() {
     attemptCount,
     registeredCourses,
     markRegistered,
+    studentId,
+    studentName,
   } = useStore();
 
   const [searchQuery, setSearchQuery] = useState("");
@@ -146,7 +148,9 @@ export default function Dashboard() {
             <h1 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
               Registration Bot Dashboard
             </h1>
-            <p className="text-gray-400 text-sm mt-1">Logged in as: 23127676 (AkusA)</p>
+            <p className="text-gray-400 text-sm mt-1">
+              Logged in as: {studentId}{studentName ? ` (${studentName})` : ""}
+            </p>
           </div>
           <button
             onClick={logout}
